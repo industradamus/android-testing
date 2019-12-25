@@ -7,6 +7,7 @@ android {
     compileSdkVersion rootProject.compileSdkVersion
 
     defaultConfig {
+        targetSdkVersion 29
         applicationId "com.example.android.architecture.blueprints.reactive"
         minSdkVersion rootProject.minSdkVersion
         targetSdkVersion rootProject.targetSdkVersion
@@ -24,6 +25,10 @@ android {
     dataBinding {
         enabled = true
         enabledForTests = true
+    }
+
+    testOptions.unitTests {
+        includeAndroidResources = true
     }
 }
 
@@ -58,6 +63,12 @@ dependencies {
     // AndroidX Test - Instrumented testing
     androidTestImplementation "androidx.test.ext:junit:$androidXTestExtKotlinRunnerVersion"
     androidTestImplementation "androidx.test.espresso:espresso-core:$espressoVersion"
+
+    // AndroidX Test - JVM testing
+    testImplementation "androidx.test.ext:junit-ktx:$androidXTestExtKotlinRunnerVersion"
+    testImplementation "androidx.test:core-ktx:$androidXTestCoreVersion"
+    testImplementation "org.robolectric:robolectric:$robolectricVersion"
+    testImplementation "androidx.arch.core:core-testing:$archTestingVersion"
 
     // Kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion"
